@@ -43,7 +43,7 @@ router.post("/upload", (req, res, next) => {
   let base64Data = req.body.img.replace(/^data:image\/png;base64,/, "");
 
   fs.unlink(tempImgUrl, (err) => {
-    if (err) throw err;    
+    console.log(err);    
     fs.appendFile(tempImgUrl, base64Data, "base64", function (err) {
       console.log(err);
     });
