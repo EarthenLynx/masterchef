@@ -38,11 +38,16 @@ router.get("/", function (req, res, next) {
 
 // When receiving the post request, save the file in the temp folder
 router.post("/upload", (req, res, next) => {
+  let tempImgUrl = path.join(gpath, "/tmp/temp.png")
+
   let base64Data = req.body.img.replace(/^data:image\/png;base64,/, "");
 
-  fs.writeFile(path.join(gpath, "/tmp/temp.png"), base64Data, "base64", function (err) {
-    console.log(err);
-  });
+  fs.unlink(tempImgUrl, (err) => {
+    if (err) throw err;    
+    fs.appendFile(tempImgUrl, base64Data, "base64", function (err) {
+      console.log(err);
+    });
+  }); 
 });
 
 // Post a new recipe when receiving a post - request
