@@ -13,7 +13,7 @@ const mongoDB = "mongodb://127.0.0.1/cooking_recipes";
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 
 // Create a var for the gallery path
-const gpath = path.resolve(__dirname, "../../img/"); 
+const gpath = path.resolve(__dirname, "../../public/img/"); 
 
 // Get the list of recipes when calling the api with a get request.
 router.get("/", function (req, res, next) {
@@ -54,7 +54,7 @@ router.post("/", function (req, res, next) {
 
   // Save the recipe
   let recipe = new Recipe({
-    recipe_img_url: newImgUrl,
+    recipe_img_url: path.join("/img/thumbnails/", req.body.recipe_name).concat(".png"),
     recipe_name: req.body.recipe_name,
     recipe_tags: req.body.recipe_tags,
     recipe_desc: req.body.recipe_desc,
