@@ -57,4 +57,5 @@ app.use(function(err, req, res, next) {
 // Configure the port
 app.set('port', (process.env.PORT || 3000));
 
+// Make the app liste to the standard port
 app.listen(app.get('port'), () => console.log('Listening to port 3000'));
