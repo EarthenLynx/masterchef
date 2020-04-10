@@ -2,7 +2,7 @@ const Recipe = require("../models/recipe");
 const path = require("path");
 const fs = require("fs"); 
 
-const galleryPath = path.resolve(__dirname, "../public/img/");
+const galleryPath = require("../config/paths").galleryPath;
 
 const saveRecipe = function(req, res) {
     // Create the urls for the operation

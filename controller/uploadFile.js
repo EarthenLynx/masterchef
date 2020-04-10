@@ -1,7 +1,7 @@
 const path = require("path");
 const fs = require("fs"); 
 
-const galleryPath = path.resolve(__dirname, "../public/img/");
+const galleryPath = require("../config/paths").galleryPath;
 
 const saveImgTemp = function (req) {
   let tempImgUrl = path.join(galleryPath, "/tmp/temp.png");
